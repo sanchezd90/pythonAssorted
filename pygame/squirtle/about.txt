@@ -1,0 +1,3 @@
+This is a sample game I made while learning how to code with pygame. 
+It doesn't do much but it helped me learn the basics about initializing a game, 
+loading images and setting the main game logic. 

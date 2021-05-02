@@ -1,0 +1,4 @@
+Game instructions
+
+Move the ball with arrow keys and collect all letters in alphabetical order. 
+Avoid colliding with any of the red balls. 
