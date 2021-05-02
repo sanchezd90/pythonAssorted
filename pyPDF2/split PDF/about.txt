@@ -1,0 +1,7 @@
+crearPDF
+
+A few months ago I had to generate a certificate for every participant at a contest. 
+I used Microsoft Word to generate automatically all certificates using a list of participants. 
+However, the output was a single file with one certificate per page. This was unconvenient since I had to send certificates to each participant. 
+I wrote this function so I could split the original file into separate ones containing only each participants certifcate.
+ 
