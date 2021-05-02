@@ -5,6 +5,11 @@ def remove_duplicates(lista):
     [output.append(x) for x in lista if x not in output]
     return output
 
+def match_between_lists(listA,listB):
+    return any(True if x in listA else False for x in listB)
+
+
+#--DICTIONARIES--
 def replace_dictKey(dictionary,old_key,new_key):
     dictionary[new_key] = dictionary.pop(old_key)
 
@@ -41,8 +46,49 @@ def write_newfile(text,output_file):
     with open(output_file,"w",encoding="utf-8") as f:
         f.write(text)
 
+def txt_to_list(filename):
+    lista = []
+    with open(filename,"r",encoding="utf-8") as f:
+    for entry in f:
+        lista.append(entry)
+    return lista
+
 #--JSON--
 def write_json(contenido,archivo):
+    if "json" not in dir():
+        import json
     with open(archivo,"w",encoding="utf-8") as f:
         out=json.dumps(contenido,indent=4)
         f.write(out)
+
+def read_json(filename):
+    if "json" not in dir():
+        import json
+    with open(filename,"r",enconding="utf-8") as f:
+        content=json.loads(f)
+    return content 
+
+#--CSV--
+def leercsv(filename):
+    contenido = []
+    with open(filename,"r") as fin1:
+        for num, line in enumerate(fin1):
+            if num == 0:
+                keys = line.split(";")
+            else:
+                split = line.split(";")
+                d = {}
+                for x in range(len(split)):
+                    d[keys[x].rstrip("\n")]=split[x].rstrip("\n")
+                contenido.append(d)
+    return contenido
+
+#--EXCEL--
+def get_cell(archivo,cell):
+    if "openpyxl" not in dir():
+        import openpyxl
+
+    wb = openpyxl.load_workbook(archivo, data_only=True)
+    main = wb.sheetnames[0]
+    sheet = wb[main]
+    return sheet[cell].value
